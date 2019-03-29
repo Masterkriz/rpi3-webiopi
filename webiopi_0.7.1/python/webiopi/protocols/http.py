@@ -148,6 +148,10 @@ class HTTPHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         else:
             self.send_response(code)
             self.send_header("Cache-Control", "no-cache")
+			self.send_header("Access-Control-Allow-Origin", "*")
+			self.send_header("Access-Control-Allow-Methods", "POST, GET")
+			self.send_header("Access-Control-Allow-Credentials", "true")
+			self.send_header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization")
             if body != None:
                 encodedBody = body.encode();
                 self.send_header("Content-Type", contentType);
